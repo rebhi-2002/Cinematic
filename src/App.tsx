@@ -8,6 +8,7 @@ import { Toaster } from 'sonner';
 import { HomePage } from './pages/HomePage';
 import { MovieDetailsPage } from './pages/MovieDetailsPage';
 import { SearchPage } from './pages/SearchPage';
+import { BrowsePage } from './pages/BrowsePage';
 import { GenresPage } from './pages/GenresPage';
 import { WatchlistPage } from './pages/WatchlistPage';
 import { LoginPage, RegisterPage } from './pages/AuthPages';
@@ -38,6 +39,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/movie/:id" element={<MovieDetailsPage />} />
             <Route path="/search" element={<SearchPage />} />
+            <Route path="/browse" element={<BrowsePage />} />
             <Route path="/genres" element={<GenresPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />

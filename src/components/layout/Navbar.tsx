@@ -11,7 +11,6 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Change navbar style when scrolling
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -56,8 +55,11 @@ export function Navbar() {
             <Link to="/" className="text-gray-300 hover:text-white transition-colors">
               Home
             </Link>
-            <Link to="/search" className="text-gray-300 hover:text-white transition-colors">
+            <Link to="/browse" className="text-gray-300 hover:text-white transition-colors">
               Browse
+            </Link>
+            <Link to="/search" className="text-gray-300 hover:text-white transition-colors">
+              Search
             </Link>
             <Link to="/genres" className="text-gray-300 hover:text-white transition-colors">
               Genres
@@ -154,11 +156,18 @@ export function Navbar() {
                 Home
               </Link>
               <Link 
-                to="/search" 
+                to="/browse" 
                 className="text-gray-300 hover:text-white transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Browse
+              </Link>
+              <Link 
+                to="/search" 
+                className="text-gray-300 hover:text-white transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Search
               </Link>
               <Link 
                 to="/genres" 
