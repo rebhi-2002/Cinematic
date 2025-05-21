@@ -19,67 +19,51 @@ export interface SubscriptionPlan {
   renewalDate: string;
 }
 
-export interface Movie {
+export type MediaType = 'movie' | 'tv' | 'person';
+
+export interface Media {
   id: number;
   title: string;
   overview: string;
   poster_path: string;
   backdrop_path: string;
-  release_date: string;
   vote_average: number;
   vote_count: number;
   genre_ids: number[];
-  runtime?: number;
-  media_type?: 'movie';
-  streamUrl?: string;
-  trailerUrl?: string;
+  media_type: MediaType;
 }
 
-export interface MovieDetails extends Movie {
-  genres: Genre[];
-  runtime: number;
-  tagline: string;
-  status: string;
-  budget: number;
-  revenue: number;
-  homepage: string;
-  production_companies: ProductionCompany[];
-  videos: {
-    results: Video[];
-  };
-  credits: {
-    cast: CastMember[];
-    crew: CrewMember[];
-  };
-  similar: {
-    results: Movie[];
-  };
-  recommendations: {
-    results: Movie[];
-  };
-  reviews: {
-    results: Review[];
-  };
+export interface Movie extends Media {
+  media_type: 'movie';
+  release_date: string;
+  runtime?: number;
+}
+
+export interface TVShow extends Media {
+  media_type: 'tv';
+  name: string;
+  first_air_date: string;
+  episode_run_time: number[];
 }
 
 export interface WatchlistItem {
   id: string;
-  movieId: number;
+  mediaId: number;
   userId: string;
+  mediaType: MediaType;
   addedDate: string;
   watched: boolean;
-  watchedDate?: string;
-  progress?: number;
+  progress: number;
 }
 
 export interface PlaybackState {
   currentTime: number;
   duration: number;
   isPlaying: boolean;
-  quality: '480p' | '720p' | '1080p' | '4K';
   volume: number;
   isMuted: boolean;
   isFullscreen: boolean;
+  quality?: '480p' | '720p' | '1080p' | '4K';
   subtitle?: string;
   audioTrack?: string;
 }
@@ -87,7 +71,7 @@ export interface PlaybackState {
 export interface UserProfile {
   id: string;
   userId: string;
-  name: string;
+  username: string;
   avatar: string;
   isKids: boolean;
   preferences: {
@@ -98,4 +82,15 @@ export interface UserProfile {
   };
 }
 
-// ... (keeping existing types)
+export interface Review {
+  id: string;
+  mediaId: number;
+  userId: string;
+  rating: number;
+  content: string;
+  createdAt: string;
+  user: {
+    username: string;
+    avatar: string;
+  };
+}
